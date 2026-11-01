@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Tokens do DESIGN.md: papel, tinta, grafite, moldura e um único azul de destaque. */
+@theme {
+  --color-papel: #f0f0ec;
+  --color-tinta: #191919;
+  --color-grafite: #585858;
+  --color-moldura: #d6d6d0;
+  --color-azul: #2b3fd6;
+  --color-azul-escuro: #1f2fa8;
+
+  --font-display: 'Bodoni Moda', 'Didot', 'Times New Roman', serif;
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-papel);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-papel);
+    color: var(--color-tinta);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  /* O cabeçalho fixo não pode esconder o título da seção ao clicar no menu */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  ::selection {
+    background: var(--color-azul);
+    color: #fff;
+  }
+  /* Foco do teclado sempre visível: azul no papel, branco na faixa escura */
+  :focus-visible {
+    outline: 2px solid var(--color-azul);
+    outline-offset: 2px;
+  }
+  .faixa-escura :focus-visible,
+  .faixa-escura:focus-visible {
+    outline-color: #fff;
+  }
+}
+
+/* Contorno duplo (azul com borda branca): aparece em fundo claro e escuro, usado na janela de zoom */
+.anel-duplo:focus-visible {
+  outline: 2px solid var(--color-azul);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #fff;
+}
+
+/* Um único momento de movimento: a foto do topo aparece ao carregar. */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .entrada-foto {
+    animation: aparecer 700ms ease-out both;
+  }
+}
