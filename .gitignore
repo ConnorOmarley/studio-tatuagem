@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Fotos originais pesadas (o site usa as versões WebP em public/assets)
+originais-fotos/
+
+# Arquivos locais do Claude
+.claude/

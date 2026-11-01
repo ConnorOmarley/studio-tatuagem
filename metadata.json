@@ -1,0 +1,6 @@
+{
+  "name": "Gravura Art Studio",
+  "description": "Estúdio de tatuagem artística no centro do Recife. Realismo, traços finos e projetos exclusivos com biossegurança e nota 5.0 no Google.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
